@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-import struct,subprocess,sys,socket
+import struct,subprocess,sys,socket #
 
 if len(sys.argv) != 5:
   print 'Usage: path_to_script [-h][-ip][-port]'
