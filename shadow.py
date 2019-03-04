@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-import struct,subprocess,sys,socket 
+import struct,subprocess,sys,socket
 
 if len(sys.argv) != 5:
   print 'Usage: path_to_script [-h][-ip][-port]'
@@ -51,7 +51,6 @@ for i in range(0,20): #run this 20 times so we remove all mouse devices
       devices.remove(item)
 path =  subprocess.check_output('realpath /dev/input/by-path/' + devices[0], shell=True)
 path = path.replace('\n','')
-
 
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((ip, port))
