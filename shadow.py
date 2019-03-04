@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 '''
-Copyright © 2019 Konstantinos Sarantopoulos
+Copyright Â© 2019 Konstantinos Sarantopoulos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,9 +29,6 @@ if len(sys.argv) != 5:
   sys.exit()
 
 for i in range(0, len(sys.argv) - 1):
-  if sys.argv[i] == '-h':
-    print 'Usage: path_to_script [-h][-ip][-port]'
-    sys.exit()
   if sys.argv[i] == '-ip':
     ip = sys.argv[i+1]
   if sys.argv[i] == '-port':
