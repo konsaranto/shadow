@@ -13,7 +13,7 @@ path_to_script [-h][-ip][-port]
 ## Flags
 
 -h: display help  
--ip: the attacker's ip
+-ip: the attacker's ip  
 -port: the port
 
 ## Comments
