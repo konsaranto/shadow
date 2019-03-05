@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-import struct,subprocess,sys,socket
+import struct,subprocess,sys,socket,time
 
 if len(sys.argv) != 5:
   print 'Usage: path_to_script [-h][-ip][-port]'
@@ -46,8 +46,31 @@ for i in range(0,20): #run this 20 times so we remove all mouse devices
   for item in devices:
     if item == "" or 'mouse' in item:
       devices.remove(item)
-path =  subprocess.check_output('realpath /dev/input/by-path/' + devices[0], shell=True)
-path = path.replace('\n','')
+path = [None] * 10
+for i in range(0, len(devices)):
+  path[i] =  subprocess.check_output('realpath /dev/input/by-path/' + devices[i], shell=True)
+for i in range(0, len(path)):
+  if path[i] != None:
+    path[i] = path[i].replace('\n','')
+
+file = open('/proc/bus/input/devices', "rb");
+# while True:
+#   line = file.readline()
+#   if line == '':
+#     break
+#   print line
+line = file.readlines()
+for i in range(0, len(line)):
+  if 'EV=120013' in line[i]:
+    handlers = line[i-2]
+handlers = handlers.split(' ')
+for i in handlers:
+  if 'event' in i:
+    event = i
+for i in path:
+  if i is not None:
+   if event in i:
+      path = i
 
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((ip, port))
