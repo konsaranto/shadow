@@ -53,12 +53,7 @@ for i in range(0, len(path)):
   if path[i] != None:
     path[i] = path[i].replace('\n','')
 
-file = open('/proc/bus/input/devices', "rb");
-# while True:
-#   line = file.readline()
-#   if line == '':
-#     break
-#   print line
+file = open('/proc/bus/input/devices', "rb")
 line = file.readlines()
 for i in range(0, len(line)):
   if 'EV=120013' in line[i]:
